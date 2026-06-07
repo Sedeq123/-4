@@ -9,14 +9,14 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# إدارة حالة التنقل بين التبويبات عبر الـ Session State لضمان عدم التجمد
+# إدارة التنقل الداخلي بين التبويبات عبر الـ Session State لضمان الثبات
 if "page" not in st.session_state:
     st.session_state.page = "الرئيسية"
 
-# 2. اللمسات البصرية العلوية (الألوان الملكية الأسود والذهبي)
+# 2. اللمسات البصرية العلوية الأنيقة (الألوان الملكية الأسود والذهبي)
 st.markdown("""
     <style>
-    /* تغيير الخلفية الكلية للتطبيق */
+    /* خلفية التطبيق */
     .stApp {
         background-color: #0B0B0C !important;
         color: #E5E5E5 !important;
@@ -30,7 +30,7 @@ st.markdown("""
         font-weight: 700;
     }
     
-    /* ضبط تنسيق القائمة الجانبية وإخفاء الراديو القديم */
+    /* إخفاء القائمة الافتراضية لستريمليت وضبط شريط الجانب */
     [data-testid="stSidebarNav"] {
         display: none !important;
     }
@@ -39,7 +39,7 @@ st.markdown("""
         border-right: 1px solid #D4AF37 !important;
     }
     
-    /* جعل أزرار القائمة الجانبية مصفوفة جهة اليمين بشكل أنيق وفخم */
+    /* جعل أزرار القائمة الجانبية مصفوفة جهة اليمين */
     .stSidebar .stButton>button {
         background-color: transparent !important;
         color: #B3B3B3 !important;
@@ -49,17 +49,15 @@ st.markdown("""
         padding: 12px 15px !important;
         font-size: 16px !important;
         display: block !important;
-        transition: all 0.3s ease;
     }
     
-    /* تأثير التوهج الذهبي عند التمرير في القائمة الجانبية */
+    /* تأثير التمرير الذهبي */
     .stSidebar .stButton>button:hover {
         color: #D4AF37 !important;
         background-color: rgba(212, 175, 55, 0.08) !important;
-        box-shadow: inset 4px 0px 0px #D4AF37 !important;
     }
 
-    /* صندوق مستشار التصميم في أسفل القائمة الجانبية */
+    /* صندوق مستشار التصميم */
     .advisor-box {
         border: 1px solid #D4AF37;
         border-radius: 8px;
@@ -69,7 +67,7 @@ st.markdown("""
         margin-top: 30px;
     }
 
-    /* تنسيق كروت عرض التصاميم الفردية في الكتالوج */
+    /* كروت عرض الكاتلوج */
     .luxury-card {
         background-color: #121214;
         border: 1px solid #D4AF37;
@@ -85,7 +83,7 @@ st.markdown("""
         margin-bottom: 5px;
     }
 
-    /* أزرار الانتقال والإنتاج الفاخرة المضمونة */
+    /* أزرار الانتقال والإنتاج الفاخرة */
     .premium-btn .stButton>button {
         background-color: #121214 !important;
         color: #D4AF37 !important;
@@ -98,7 +96,6 @@ st.markdown("""
     .premium-btn .stButton>button:hover {
         background-color: #D4AF37 !important;
         color: #0B0B0C !important;
-        box-shadow: 0px 0px 10px #D4AF37 !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -112,7 +109,7 @@ def get_local_image(base_name):
     return None
 
 
-# ==================== بناء القائمة الجانبية الملكية ====================
+# ==================== بناء القائمة الجانبية الملكية المضمونة ====================
 with st.sidebar:
     st.markdown("<h2 style='margin-bottom: 0;'>👑 N</h2>", unsafe_allow_html=True)
     st.markdown("<h3 style='font-size: 18px; margin-top: 5px; margin-bottom: 0;'>NASIJ STUDIO</h3>", unsafe_allow_html=True)
@@ -149,7 +146,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
 
-# ==================== عرض محتوى الصفحات بناءً على الاختيار ====================
+# ==================== عرض محتوى الصفحات بناءً على الاختيار المستقر ====================
 
 # 1. صفحة الرئيسية
 if st.session_state.page == "الرئيسية":
@@ -161,7 +158,7 @@ if st.session_state.page == "الرئيسية":
     else:
         st.warning("⚠️ يرجى التأكد من وجود صورة الواجهة الرئيسية باسم main_luxury.png")
         
-    # أزرار واضحة ومضمونة أسفل الصورة مباشرة للتنقل الآمن
+    # تفعيل الأزرار المطلوبة أسفل الصورة مباشرة لتعمل بنسبة 100% وبدون تعليق
     st.markdown("<h3 style='margin-top:25px;'>🚀 الانتقال السريع للمنصة</h3>", unsafe_allow_html=True)
     st.markdown('<div class="premium-btn">', unsafe_allow_html=True)
     col_btn1, col_btn2 = st.columns(2)
@@ -194,7 +191,7 @@ elif st.session_state.page == "الخامات":
     with col_mat2:
         st.markdown("<div class='luxury-card'><div class='design-title'>✨ الحرير الطبيعي 100%</div><p>يعطي لمعاناً ملكياً دافئاً تتغير تموجاته الساحرة بنعومة بالغة تماشياً مع زوايا الإضاءة.</p></div>", unsafe_allow_html=True)
 
-# 4. صفحة الكاتلوج الفاخر
+# 4. صفحة الكاتلوج الفاخر مع القطع الفردية وروابطها المستقرة
 elif st.session_state.page == "الكتالوج":
     st.markdown("<h1>مجموعة التصاميم الحصرية للسجاد الفخم</h1>", unsafe_allow_html=True)
     
@@ -204,7 +201,7 @@ elif st.session_state.page == "الكتالوج":
         
     st.markdown("<br><h3>🎯 اللوحات الفردية الفاخرة للإنتاج المباشر</h3>", unsafe_allow_html=True)
     
-    # قائمة اللوحات الفردية الفاخرة وروابطها المباشرة السليمة هندسياً
+    # روابط الصور الخام من مستودعك لضمان التحميل الفوري
     individual_designs = [
         {"title": "ملحمة الشموخ", "desc": "حصان عربي أصيل بتصميم ثلاثي الأبعاد وغبار متطاير فخم يجسد القوة والحرية.", "url": "https://raw.githubusercontent.com/Sedeq123/-4/main/ChatGPT%20Image%207%20%D9%AA%D9%A0%D9%A2%D9%A6%D8%8C%2007_06_00%20%D9%85.png"},
         {"title": "الصقر الملكي", "desc": "صقر عربي ذهبي يتوسط خلفية سوداء داكنة مع نقوش حواف ملكية بالغة الدقة.", "url": "https://raw.githubusercontent.com/Sedeq123/-4/main/ChatGPT%20Image%207%20%D9%AA%D9%A0%D9%A2%D9%A6%D8%8C%2007_10_16%20%D9%85.png"},
